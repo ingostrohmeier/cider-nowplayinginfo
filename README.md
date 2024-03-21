@@ -8,11 +8,11 @@ Get Song info in seperate files. Best used for OBS Streaming or other sharing so
 
 Windows (Github): 
 ```powershell
-%appdata%\Cider\Plugins\gh_525515699\dist
+%appdata%\Cider\Plugins\gh_775513539\dist
 ```
 Windows (Microsoft Store):
 ```powershell
-%localappdata%\Packages\27554FireDevElijahKlauman.CiderAlpha_270bejk4xgzqp\LocalCache\Roaming\Cider\Plugins\gh_525515699\dist
+%localappdata%\Packages\27554FireDevElijahKlauman.CiderAlpha_270bejk4xgzqp\LocalCache\Roaming\Cider\Plugins\gh_775513539\dist
 ```
 Linux:
 ```sh
@@ -39,13 +39,6 @@ This plugin can save:
 ### Usage
 1. Play a song
 2. Files will appear in `dist` folder
-
----
-
-### See Any Bugs?
-Create an [issue](https://github.com/yazninja/nowplayinginfo/issues).
-or
-Messege me on [Discord](http://discord.com/users/325495275454070786) about it :)
 
 ---
 
