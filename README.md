@@ -16,12 +16,12 @@ Windows (Microsoft Store):
 ```
 Linux:
 ```sh
-~/.config/Cider/Plugins/gh_525515699/dist
+~/.config/Cider/Plugins/gh_775513539/dist
 ```
 
 Linux Flatpak:
 ```sh
-~/.var/app/sh.cider.Cider/config/Cider/Plugins/gh_525515699
+~/.var/app/sh.cider.Cider/config/Cider/Plugins/gh_775513539/dist
 ```
 ---
 This plugin can save:
