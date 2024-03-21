@@ -1,5 +1,9 @@
-# NowPlayingInfo Plugin for [Cider](https://cider.sh/) <img src="https://img.shields.io/github/stars/yazninja/nowplayinginfo?style=social" width="70"></img>
+# NowPlayingInfo Plugin for [Cider](https://cider.sh/)
 Get Song info in seperate files. Best used for OBS Streaming or other sharing sources. Currently in:
+
+###This is a Fork of [yazninja's Plugin](https://github.com/yazninja/nowplayinginfo) modified by me to add the following features:
++ Song info is cleared when pausing playback, which hides the info in OBS when no song is playing.
++ Blank Spaces added after Title, Artist and Album info for better readability when using scrolling text animation.
 
 Windows (Github): 
 ```powershell
@@ -12,6 +16,11 @@ Windows (Microsoft Store):
 Linux:
 ```sh
 ~/.config/Cider/Plugins/gh_525515699/dist
+```
+
+Linux Flatpak:
+```sh
+~/.var/app/sh.cider.Cider/config/Cider/Plugins/gh_525515699
 ```
 ---
 This plugin can save:

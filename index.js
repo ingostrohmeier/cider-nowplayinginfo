@@ -24,37 +24,49 @@ module.exports = class nowPlayingPlugin {
         if (!existsSync(`${this.env.dir}/dist`)) {
             mkdirSync(`${this.env.dir}/dist`);
         }
-        let artworkURL = attributes.artwork.url.replace('{h}', attributes.artwork.height).replace('{w}', attributes.artwork.width);
-        writeFileSync(`${this.env.dir}/dist/title.txt`, attributes.name)
-        console.log('The title has been saved!')
-        writeFileSync(`${this.env.dir}/dist/artist.txt`, attributes.artistName)
-        console.log('The artist has been saved!')
-        writeFileSync(`${this.env.dir}/dist/album.txt`, attributes.albumName)
-        console.log('The album has been saved!')
 
-        https.get(artworkURL, (res) => {
+        if (attributes.status == true)
+        {
+            let artworkURL = attributes.artwork.url.replace('{h}', attributes.artwork.height).replace('{w}', attributes.artwork.width);
+
+            writeFileSync(`${this.env.dir}/dist/title.txt`, `${attributes.name}   `)
+            writeFileSync(`${this.env.dir}/dist/artist.txt`, `${attributes.artistName}   `)
+            writeFileSync(`${this.env.dir}/dist/album.txt`, `${attributes.albumName}   `)
+            console.log('The song info has been saved!')
+
+            https.get(artworkURL, (res) => {
+                writeFileSync(`${this.env.dir}/dist/artwork.jpg`, "")
+                console.log('statusCode:', res.statusCode);
+                console.log('headers:', res.headers);
+                res.on('data', (d) => {
+                    appendFileSync(`${this.env.dir}/dist/artwork.jpg`, d)
+                }).on('error', (e) => {
+                    console.error(e);
+                }).on('end', () => {
+                    console.log('The artwork has been saved!')
+                })
+            });
+        }
+        else
+        {
+            writeFileSync(`${this.env.dir}/dist/title.txt`, "")
+            writeFileSync(`${this.env.dir}/dist/artist.txt`, "")
+            writeFileSync(`${this.env.dir}/dist/album.txt`, "")
             writeFileSync(`${this.env.dir}/dist/artwork.jpg`, "")
-            console.log('statusCode:', res.statusCode);
-            console.log('headers:', res.headers);
-            res.on('data', (d) => {
-                appendFileSync(`${this.env.dir}/dist/artwork.jpg`, d)
-            }).on('error', (e) => {
-                console.error(e);
-            }).on('end', () => {
-                console.log('The artwork has been saved!')
-            })
-        });
+            console.log('The song info and artwork have been cleared!')
+        }
     }
+
     onNowPlayingItemDidChange(attributes) {
         if (!existsSync(`${this.env.dir}/dist`)) {
             mkdirSync(`${this.env.dir}/dist`);
         }
         let artworkURL = attributes.artwork.url.replace('{h}', attributes.artwork.height).replace('{w}', attributes.artwork.width);
-        writeFileSync(`${this.env.dir}/dist/title.txt`, attributes.name)
+        writeFileSync(`${this.env.dir}/dist/title.txt`, `${attributes.name}   `)
         console.log('The title has been saved!')
-        writeFileSync(`${this.env.dir}/dist/artist.txt`, attributes.artistName)
+        writeFileSync(`${this.env.dir}/dist/artist.txt`, `${attributes.artistName}   `)
         console.log('The artist has been saved!')
-        writeFileSync(`${this.env.dir}/dist/album.txt`, attributes.albumName)
+        writeFileSync(`${this.env.dir}/dist/album.txt`, `${attributes.albumName}   `)
         console.log('The album has been saved!')
 
         https.get(artworkURL, (res) => {
@@ -70,6 +82,7 @@ module.exports = class nowPlayingPlugin {
             })
         });
     }
+
     onBeforeQuit() {
         writeFileSync(`${this.env.dir}/dist/title.txt`, "")
         writeFileSync(`${this.env.dir}/dist/artist.txt`, "")
